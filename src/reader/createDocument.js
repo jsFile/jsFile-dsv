@@ -98,7 +98,7 @@ export default function (text) {
 
         resolve(new Document({
             name: this.fileName,
-            pages: [page]
+            content: [page]
         }));
     }.bind(this));
 }
