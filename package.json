@@ -1,6 +1,6 @@
 {
     "name": "jsfile-dsv",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "jsFile-dsv",
     "main": "dist/jsfile-dsv.js",
     "scripts": {

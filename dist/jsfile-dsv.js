@@ -263,7 +263,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        page.children.push(table);
 
 	        resolve(new Document({
-	            name: this.fileName,
+	            meta: {
+	                name: this.fileName
+	            },
 	            content: [page]
 	        }));
 	    }).bind(this));
