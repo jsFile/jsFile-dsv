@@ -1,5 +1,5 @@
 # jsFile-dsv [![Build Status](https://secure.travis-ci.org/jsFile/jsFile-dsv.png?branch=master)](https://travis-ci.org/jsFile/jsFile-dsv)
-Engine for jsFile library for working with documents in DSV format
+Engine for jsFile library for working with documents in [DSV](https://en.wikipedia.org/wiki/Delimiter-separated_values) format (like .csv, .tsv)
 
 ## Installation
 ### via NPM
@@ -29,4 +29,4 @@ import JsFileDsv from 'jsfile-dsv';
 
 const jf = new JsFile(file, options);
 ````
-file - a file of DSV type. You may find information about options and `jsFile` in [documentation](https://github.com/jsFile/jsFile#installation)
+`file` - a file of [DSV](https://en.wikipedia.org/wiki/Delimiter-separated_values) type. You may find information about options and `jsFile` in [documentation](https://github.com/jsFile/jsFile#installation)
