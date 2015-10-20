@@ -266,7 +266,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	            meta: {
 	                name: this.fileName
 	            },
-	            content: [page]
+	            content: [page],
+	            styles: [{
+	                selector: 'table',
+	                properties: {
+	                    borderCollapse: 'collapse'
+	                }
+	            }, {
+	                selector: 'table td, table th',
+	                properties: {
+	                    borderWidth: {
+	                        value: 1,
+	                        unit: 'pt'
+	                    },
+	                    borderStyle: 'solid',
+	                    borderColor: '#000000'
+
+	                }
+	            }]
 	        }));
 	    }).bind(this));
 	};
