@@ -208,6 +208,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var table = Document.elementPrototype;
 	        var content = Document.elementPrototype;
 	        var delimiter = ',';
+	        var isNotEmpty = false;
 	        var comment = false;
 	        var i = 0;
 	        var ch = text[i];
@@ -227,15 +228,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	        row.properties.tagName = 'TR';
 	        cell.properties.tagName = 'TD';
 
+	        page.children.push(table);
+	        table.children.push(content);
+	        content.children.push(row);
+	        row.children.push(cell);
+
 	        while (i < length) {
 	            if (ch === '#' && !cell.properties.textContent) {
 	                comment = true;
 	            } else if (ch === newLineDelimiter) {
 	                if (!comment) {
+	                    row = Document.elementPrototype;
+	                    cell = Document.elementPrototype;
+	                    row.properties.tagName = 'TR';
+	                    cell.properties.tagName = 'TD';
+
 	                    row.children.push(cell);
 	                    content.children.push(row);
-	                    row = Document.elementPrototype;
-	                    row.properties.tagName = 'TR';
 	                }
 
 	                comment = false;
@@ -244,13 +253,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	                if (ch === quote) {
 	                    quotesCount++;
 	                } else if (quotesCount % 2 === 0 && (ch === delimiter || ch === delimiter[0] && text.substr(i, delimiterLen) === delimiter)) {
-	                    row.children.push(cell);
 	                    cell = Document.elementPrototype;
 	                    cell.properties.tagName = 'TD';
+	                    row.children.push(cell);
 
 	                    // -1 because we make i++ each iteration
 	                    i += delimiterLen - 1;
 	                } else {
+	                    isNotEmpty = isNotEmpty || Boolean(ch);
 	                    cell.properties.textContent += ch;
 	                }
 	            }
@@ -259,8 +269,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            ch = text[i];
 	        }
 
-	        table.children.push(content);
-	        page.children.push(table);
+	        //remove all rows if table is empty
+	        if (!isNotEmpty) {
+	            content.children = [];
+	        }
 
 	        resolve(new Document({
 	            meta: {
