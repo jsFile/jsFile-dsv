@@ -1,4 +1,4 @@
-# jsFile-dsv [![Build Status](https://secure.travis-ci.org/jsFile/jsFile-dsv.png?branch=master)](https://travis-ci.org/jsFile/jsFile-dsv)
+# jsFile-dsv [![Build Status](https://secure.travis-ci.org/jsFile/jsFile-dsv.png?branch=master)](https://travis-ci.org/jsFile/jsFile-dsv) [![Coverage Status](https://coveralls.io/repos/jsFile/jsFile-dsv/badge.svg?branch=master&service=github)](https://coveralls.io/github/jsFile/jsFile-dsv?branch=master)
 Engine for jsFile library for working with documents in [DSV](https://en.wikipedia.org/wiki/Delimiter-separated_values) format (like .csv, .tsv)
 
 ## Installation
