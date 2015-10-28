@@ -5,6 +5,7 @@
   "main": "dist/jsfile-dsv.js",
   "scripts": {
     "test": "./node_modules/.bin/grunt blobify && ./node_modules/.bin/karma start",
+    "test-coveralls": "grunt blobify && karma start --reporters=progress,coverage,coveralls",
     "build": "./node_modules/.bin/grunt build",
     "preinstall": "npm install chai-json-schema"
   },
