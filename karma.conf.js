@@ -42,7 +42,8 @@ module.exports = function (config) {
                         test: /(spec|src)/,
                         loader: 'babel',
                         query: {
-                            stage: 0
+                            stage: 0,
+                            auxiliaryCommentBefore: 'istanbul ignore next'
                         }
                     }
                 ],
