@@ -19,6 +19,10 @@ describe('jsFile-dsv', () => {
         assert.isFunction(DsvEngine);
     });
 
+    it('should have files for testing', () => {
+        assert.notEqual(Object.keys(files || {}).length, 0);
+    });
+
     it('should read the file', function () {
         this.timeout(15000);
         const queue = [];
@@ -30,7 +34,6 @@ describe('jsFile-dsv', () => {
                         workerPath: '/base/dist/workers/'
                     });
                     const promise = jf.read().then(done, done);
-
                     queue.push(promise);
 
                     function done (result) {
@@ -39,8 +42,8 @@ describe('jsFile-dsv', () => {
                         const html = result.html();
                         const text = html.textContent || '';
                         assert.jsonSchema(json, documentSchema, name);
-                        assert.notEqual(text.length, 0, `File ${name} shouldn't be empty`);
-                        assert.notEqual(result.name.length, 0, `Engine should parse a name of file ${name}`);
+                        assert.notEqual(text.length, 0, 'File ' + name + ' shouldn\'t be empty');
+                        assert.notEqual(result.name.length, 0, 'Engine should parse a name of file ' + name);
                     }
                 }(files[name], name));
             }

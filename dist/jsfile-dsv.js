@@ -56,25 +56,30 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	Object.defineProperty(exports, '__esModule', {
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 	var _JsFile = __webpack_require__(1);
 
-	var _readerCreateDocument = __webpack_require__(2);
+	var _JsFile2 = _interopRequireDefault(_JsFile);
 
-	var _readerCreateDocument2 = _interopRequireDefault(_readerCreateDocument);
+	var _createDocument = __webpack_require__(2);
+
+	var _createDocument2 = _interopRequireDefault(_createDocument);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Engine = _JsFile2.default.Engine;
+	var defineEngine = _JsFile2.default.defineEngine;
 
 	var csvFiles = {
 	    extension: ['csv'],
@@ -103,46 +108,43 @@ return /******/ (function(modules) { // webpackBootstrap
 	    files.mime.push.apply(files.mime, mime);
 	});
 
-	var DsvEngine = (function (_Engine) {
+	var DsvEngine = function (_Engine) {
 	    _inherits(DsvEngine, _Engine);
 
 	    function DsvEngine() {
 	        _classCallCheck(this, DsvEngine);
 
-	        _get(Object.getPrototypeOf(DsvEngine.prototype), 'constructor', this).apply(this, arguments);
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DsvEngine).apply(this, arguments));
 
-	        this.createDocument = _readerCreateDocument2['default'];
-	        this.files = files;
+	        _this.createDocument = _createDocument2.default;
+	        _this.files = files;
+	        return _this;
 	    }
 
 	    _createClass(DsvEngine, [{
 	        key: 'isCsv',
 	        value: function isCsv() {
-	            return Boolean(this.file && _JsFile.Engine.validateFile(this.file, csvFiles));
+	            return Boolean(this.file && Engine.validateFile(this.file, csvFiles));
 	        }
 	    }, {
 	        key: 'isTsv',
 	        value: function isTsv() {
-	            return Boolean(this.file && _JsFile.Engine.validateFile(this.file, tsvFiles));
+	            return Boolean(this.file && Engine.validateFile(this.file, tsvFiles));
 	        }
 	    }], [{
 	        key: 'test',
 	        value: function test(file) {
-	            return Boolean(file && _JsFile.Engine.validateFile(file, files));
+	            return Boolean(file && Engine.validateFile(file, files));
 	        }
-	    }, {
-	        key: 'mimeTypes',
-	        value: files.mime.slice(0),
-	        enumerable: true
 	    }]);
 
 	    return DsvEngine;
-	})(_JsFile.Engine);
+	}(Engine);
 
-	(0, _JsFile.defineEngine)(DsvEngine);
+	DsvEngine.mimeTypes = files.mime.slice(0);
+	defineEngine(DsvEngine);
 
-	exports['default'] = DsvEngine;
-	module.exports = exports['default'];
+	exports.default = DsvEngine;
 
 /***/ },
 /* 1 */
@@ -156,17 +158,18 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	Object.defineProperty(exports, '__esModule', {
+	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	exports.default = createDocument;
 
 	var _JsFile = __webpack_require__(1);
 
 	var _JsFile2 = _interopRequireDefault(_JsFile);
 
-	var Document = _JsFile2['default'].Document;
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Document = _JsFile2.default.Document;
 
 	var quote = '"';
 
@@ -199,10 +202,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param text {String}
 	 * @private
 	 */
+	function createDocument(text) {
+	    var _this = this;
 
-	exports['default'] = function (text) {
-	    return new Promise((function (resolve) {
-	        var delimiterType = this.isTsv() ? 'tab' : 'comma';
+	    return new Promise(function (resolve) {
+	        var delimiterType = _this.isTsv() ? 'tab' : 'comma';
 	        var newLineDelimiter = getNewLineDelimiter(text);
 	        var length = text.length;
 	        var table = Document.elementPrototype;
@@ -276,7 +280,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        resolve(new Document({
 	            meta: {
-	                name: this.fileName
+	                name: _this.fileName
 	            },
 	            content: [page],
 	            styles: [{
@@ -293,14 +297,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    },
 	                    borderStyle: 'solid',
 	                    borderColor: '#000000'
-
 	                }
 	            }]
 	        }));
-	    }).bind(this));
-	};
-
-	module.exports = exports['default'];
+	    });
+	}
 
 /***/ }
 /******/ ])

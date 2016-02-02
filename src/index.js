@@ -1,6 +1,7 @@
-import {Engine, defineEngine} from 'JsFile';
+import JsFile from 'JsFile';
 import createDocument from './reader/createDocument';
 
+const {Engine, defineEngine} = JsFile;
 const csvFiles = {
     extension: ['csv'],
     mime: ['text/csv']
@@ -26,9 +27,11 @@ const files = {
 });
 
 class DsvEngine extends Engine {
-    createDocument = createDocument
-
-    files = files
+    constructor () {
+        super(...arguments);
+        this.createDocument = createDocument;
+        this.files = files;
+    }
 
     isCsv () {
         return Boolean(this.file && Engine.validateFile(this.file, csvFiles));
@@ -41,10 +44,9 @@ class DsvEngine extends Engine {
     static test (file) {
         return Boolean(file && Engine.validateFile(file, files));
     }
-
-    static mimeTypes = files.mime.slice(0)
 }
 
+DsvEngine.mimeTypes = files.mime.slice(0);
 defineEngine(DsvEngine);
 
 export default DsvEngine;

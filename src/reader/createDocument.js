@@ -31,8 +31,8 @@ function getNewLineDelimiter (text) {
  * @param text {String}
  * @private
  */
-export default function (text) {
-    return new Promise(function (resolve) {
+export default function createDocument (text) {
+    return new Promise((resolve) => {
         const delimiterType = this.isTsv() ? 'tab' : 'comma';
         const newLineDelimiter = getNewLineDelimiter(text);
         const length = text.length;
@@ -128,11 +128,10 @@ export default function (text) {
                             unit: 'pt'
                         },
                         borderStyle: 'solid',
-                        borderColor: '#000000',
-
+                        borderColor: '#000000'
                     }
                 }
             ]
         }));
-    }.bind(this));
+    });
 }
