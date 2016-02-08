@@ -13,10 +13,7 @@ describe('jsFile-dsv', () => {
 
     before(() => {
         files = window.files;
-    });
-
-    it('should exist', () => {
-        assert.isFunction(DsvEngine);
+        JsFile.defineEngine(DsvEngine);
     });
 
     it('should have files for testing', () => {

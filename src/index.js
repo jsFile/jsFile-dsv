@@ -1,7 +1,7 @@
 import JsFile from 'JsFile';
 import createDocument from './reader/createDocument';
 
-const {Engine, defineEngine} = JsFile;
+const {Engine} = JsFile;
 const csvFiles = {
     extension: ['csv'],
     mime: ['text/csv']
@@ -47,6 +47,5 @@ class DsvEngine extends Engine {
 }
 
 DsvEngine.mimeTypes = files.mime.slice(0);
-defineEngine(DsvEngine);
 
 export default DsvEngine;
